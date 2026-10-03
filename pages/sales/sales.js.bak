@@ -1,0 +1,64 @@
+Page({
+  data: {
+    products: [],
+    selectedProduct: {},
+    quantity: '',
+    unitPrice: '',
+    note: ''
+  },
+
+  onLoad() {
+    const products = wx.getStorageSync('store_products') || [];
+    this.setData({ products, selectedProduct: products[0] || {} });
+  },
+
+  onProductChange(e) {
+    const idx = Number(e.detail.value);
+    this.setData({ selectedProduct: this.data.products[idx] });
+  },
+
+  onNoteInput(e) {
+    this.setData({ note: e.detail.value });
+  },
+
+  onQuantityInput(e) {
+    this.setData({ quantity: e.detail.value });
+  },
+
+  onUnitPriceInput(e) {
+    this.setData({ unitPrice: e.detail.value });
+  },
+
+  saveSale(e) {
+    const user = wx.getStorageSync('current_user');
+    if (!user) return;
+
+    const productId = this.data.selectedProduct.id;
+    const quantity = Number(this.data.quantity || 0);
+    const unitPrice = Number(this.data.unitPrice || 0);
+
+    if (!productId || !quantity || !unitPrice) {
+      wx.showToast({ title: '请填写完整', icon: 'none' });
+      return;
+    }
+
+    const sale = {
+      id: Date.now(),
+      userId: user.id,
+      userName: user.name,
+      productName: this.data.selectedProduct.name,
+      quantity,
+      unitPrice,
+      total: quantity * unitPrice,
+      time: new Date().toLocaleString(),
+      note: this.data.note || '无备注'
+    };
+
+    const sales = wx.getStorageSync('store_sales') || [];
+    sales.push(sale);
+    wx.setStorageSync('store_sales', sales);
+
+    wx.showToast({ title: '保存成功', icon: 'success' });
+    this.setData({ quantity: '', unitPrice: '', note: '' });
+  }
+});

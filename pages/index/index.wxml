@@ -1,0 +1,16 @@
+<view class="container">
+  <view class="header">
+    <text class="greet">欢迎，{{user.name}}</text>
+    <text class="role">{{user.role}} / {{user.store}}</text>
+  </view>
+
+  <view class="grid">
+    <navigator wx:for="{{actions}}" wx:key="name" url="{{item.url}}" class="tile" style="background: {{item.color}};">
+      {{item.name}}
+    </navigator>
+  </view>
+
+  <view class="card">
+    <button bindtap="logout" class="danger-btn">退出登录</button>
+  </view>
+</view>

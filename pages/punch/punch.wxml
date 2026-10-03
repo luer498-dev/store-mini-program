@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="card">
+    <text class="title">员工打卡</text>
+
+    <picker bindchange="onTypeChange" value="{{typeIndex}}" range="{{types}}">
+      <view class="picker-row">
+        <text>打卡类型：{{punchType}}</text>
+      </view>
+    </picker>
+
+    <input bindinput="onNoteInput" placeholder="备注" value="{{note}}" class="input" />
+    <button bindtap="submit" class="primary-btn">提交打卡</button>
+  </view>
+
+  <view class="list-box">
+    <text class="subtitle">打卡记录</text>
+    <view wx:for="{{punchList}}" wx:key="id" class="list-item">
+      <text>{{item.type}} · {{item.time}}</text>
+      <text>{{item.note}}</text>
+    </view>
+  </view>
+</view>

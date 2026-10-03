@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="card">
+    <text class="title">客户信息</text>
+    <input bindinput="onNameInput" placeholder="客户姓名" class="input" />
+    <input bindinput="onPhoneInput" placeholder="联系方式" class="input" />
+    <input bindinput="onFavInput" placeholder="偏好产品" class="input" />
+    <input bindinput="onRemarkInput" placeholder="备注" class="input" />
+    <button bindtap="saveCustomer" class="primary-btn">保存客户</button>
+  </view>
+
+  <view class="list-box">
+    <text class="subtitle">客户列表</text>
+    <view wx:for="{{customers}}" wx:key="id" class="list-item">
+      <text>{{item.name}}</text>
+      <text>{{item.phone}}</text>
+      <text>{{item.favorite}}</text>
+    </view>
+  </view>
+</view>

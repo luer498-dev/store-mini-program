@@ -1,0 +1,27 @@
+<view class="container">
+  <view class="card">
+    <text class="title">销售录入</text>
+
+    <form bindsubmit="saveSale">
+      <picker name="productId" range="{{products}}" range-key="name" bindchange="onProductChange">
+        <view class="picker-row">
+          <text>商品：{{selectedProduct.name || '请选择'}}</text>
+        </view>
+      </picker>
+
+      <input name="quantity" type="number" placeholder="数量" class="input" value="{{quantity}}" />
+      <input name="unitPrice" type="number" placeholder="单价" class="input" value="{{unitPrice}}" />
+      <input bindinput="onNoteInput" placeholder="备注" class="input" value="{{note}}" />
+      <button formType="submit" class="primary-btn">提交</button>
+    </form>
+  </view>
+
+  <view class="list-box">
+    <text class="subtitle">我的销售记录</text>
+    <view wx:for="{{saleList}}" wx:key="id" class="list-item">
+      <text>{{item.productName}} x {{item.quantity}}</text>
+      <text>{{item.total}}元</text>
+      <text>{{item.time}}</text>
+    </view>
+  </view>
+</view>

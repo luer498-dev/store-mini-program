@@ -1,0 +1,23 @@
+<view class="container">
+  <view class="card">
+    <text class="title">门店管理系统</text>
+
+    <input bindinput="onUsernameInput" placeholder="输入姓名" class="input" />
+
+    <picker bindchange="onRoleChange" value="{{roleIndex}}" range="{{roles}}">
+      <view class="picker-row">
+        <text>角色：{{role}}</text>
+      </view>
+    </picker>
+
+    <picker bindchange="onStoreChange" value="{{storeIndex}}" range="{{stores}}">
+      <view class="picker-row">
+        <text>门店：{{store}}</text>
+      </view>
+    </picker>
+
+    <input bindinput="onTitleInput" placeholder="职称（可选）" class="input" />
+
+    <button bindtap="login" class="primary-btn">登录</button>
+  </view>
+</view>

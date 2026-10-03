@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/punch/punch",
+    "pages/sales/sales",
+    "pages/customer/customer",
+    "pages/rank/rank",
+    "pages/finance/finance"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2d7ff9",
+    "navigationBarTitleText": "门店管理",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

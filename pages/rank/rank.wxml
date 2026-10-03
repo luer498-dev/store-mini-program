@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="card">
+    <text class="title">销售榜单</text>
+  </view>
+
+  <view class="list-box">
+    <view wx:for="{{rankList}}" wx:key="name" class="rank-item">
+      <text>{{index + 1}}. {{item.name}}</text>
+      <text>￥{{item.total}}</text>
+    </view>
+  </view>
+</view>
